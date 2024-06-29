@@ -12,16 +12,17 @@ header {
     background-color: #444444;
     color: #ffffff;
     text-align: center;
-    padding: 0.5em;
+    padding: 0.1em;
 }
 
 main {
     display:flex;
     flex-direction: column;
     align-items: center;
-    margin: 2em 0;
+    margin: 1.5em 0;
 }
 
+/* Game Layout */
 #game-area {
     position: relative;
     width: 60%;
