@@ -25,7 +25,7 @@ main {
 /* Game Layout */
 #game-area {
     position: relative;
-    width: 60%;
+    width: 50%;
     height: 500px;
     background-color: #111111;
     border: 1px solid #cccccc;
