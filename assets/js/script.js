@@ -48,7 +48,12 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     function createAlien() {
-      
+        const alien = document.createElement('div');
+        alien.classList.add('alien');
+        alien.style.left = `${Math.random() * (gameArea.clientWidth - 50)}px`;
+        alien.style.top = '0px';
+        gameArea.appendChild(alien);
+        moveAlien(alien);
     }
 
     function moveAlien(alien) {
