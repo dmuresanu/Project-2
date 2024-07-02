@@ -40,11 +40,25 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     function shoot() {
-        
+        const projectile = document.createElement('div');
+        projectile.classList.add('projectile');
+        projectile.style.left = `${spaceship.offsetLeft + spaceship.clientWidth / 2 - 2.5}px`;
+        projectile.style.bottom = '60px';
+        gameArea.appendChild(projectile);
+        moveProjectile(projectile);
     }
 
     function moveProjectile(projectile) {
-        
+        const interval = setInterval(function() {
+            const bottom = parseInt(window.getComputedStyle(projectile).bottom);
+            if (bottom > gameArea.clientHeight) {
+                clearInterval(interval);
+                gameArea.removeChild(projectile);
+            } else {
+                projectile.style.bottom = `${bottom + 5}px`;
+                checkCollision(projectile);
+            }
+        }, 20);
     }
 
     function createAlien() {
