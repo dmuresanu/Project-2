@@ -21,6 +21,7 @@ This web application is a simple space shooter game where the player controls a 
 ## Attribution
 - Spaceship image generated with [MicrosoftDesigner] (https://designer.microsoft.com/image-creator)
 - Alien image generated with [MicrosoftDesigner] (https://designer.microsoft.com/image-creator)
+- Favicon created with [IONOS] (https://www.ionos.com/tools/favicon-generator#tool)
 
 ## Author
 Doru Muresanu
