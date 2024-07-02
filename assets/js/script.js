@@ -71,15 +71,50 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     function moveAlien(alien) {
-       
+        const interval = setInterval(function() {
+            const top = parseInt(window.getComputedStyle(alien).top);
+            if (top > gameArea.clientHeight - 50) {
+                clearInterval(interval);
+                gameArea.removeChild(alien);
+                loseLife();
+            } else {
+                alien.style.top = `${top + alienSpeed}px`;
+            }
+        }, 20);
     }
 
     function checkCollision(projectile) {
-        
+        const aliens = document.getElementsByClassName('alien');
+        for (let i = 0; i < aliens.length; i++) {
+            const alien = aliens[i];
+            const alienRect = alien.getBoundingClientRect();
+            const projectileRect = projectile.getBoundingClientRect();
+            if (
+                projectileRect.left < alienRect.left + alienRect.width &&
+                projectileRect.left + projectileRect.width > alienRect.left &&
+                projectileRect.top < alienRect.top + alienRect.height &&
+                projectileRect.top + projectileRect.height > alienRect.top
+            ) {
+                gameArea.removeChild(projectile);
+                gameArea.removeChild(alien);
+                score++;
+                scoreDisplay.textContent = score;
+                if (score % 5 === 0) {
+                    alienSpeed++;
+                }
+                return;
+            }
+        }
     }
 
     function loseLife() {
-       
+        lives--;
+        livesDisplay.textContent = lives;
+        if (lives === 0) {
+            alert('Game Over! Final Score: ' + score);
+            clearInterval(alienInterval);
+            window.location.reload();
+        }
     }
 
     function gameLoop() {
@@ -87,6 +122,6 @@ document.addEventListener('DOMContentLoaded', function() {
         requestAnimationFrame(gameLoop);
     }
 
-    alienInterval = setInterval(createAlien, 500);
+    alienInterval = setInterval(createAlien, 3000);
     gameLoop();
 });
