@@ -9,6 +9,8 @@ document.addEventListener('DOMContentLoaded', function() {
     let alienInterval;
     let moveLeft = false;
     let moveRight = false;
+    let touchStartX = 0;
+    let touchEndX = 0;
 
     // Move spaceship left and right
     document.addEventListener('keydown', function(event) {
@@ -27,6 +29,31 @@ document.addEventListener('DOMContentLoaded', function() {
         } else if (event.key === 'ArrowRight') {
             moveRight = false;
         }
+    });
+
+    gameArea.addEventListener('touchstart', function(event) {
+        touchStartX = event.touches[0].clientX;
+    });
+
+    gameArea.addEventListener('touchmove', function(event) {
+        touchEndX = event.touches[0].clientX;
+        const deltaX = touchEndX - touchStartX;
+
+        if (deltaX > 20) {
+            moveRight = true;
+            moveLeft = false;
+        } else if (deltaX < -20) {
+            moveLeft = true;
+            moveRight = false;
+        } else {
+            moveLeft = false;
+            moveRight = false;
+        }
+    });
+
+    gameArea.addEventListener('touchend', function() {
+        moveLeft = false;
+        moveRight = false;
     });
 
     function moveSpaceship() {
