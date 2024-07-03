@@ -63,10 +63,10 @@ document.addEventListener('DOMContentLoaded', function() {
     function moveSpaceship() {
         const left = parseInt(window.getComputedStyle(spaceship).left);
         if (moveLeft && left > 0) {
-            spaceship.style.left = `${left - 5}px`;
+            spaceship.style.left = `${left - 10}px`;
         }
         if (moveRight && left < gameArea.clientWidth - spaceship.clientWidth) {
-            spaceship.style.left = `${left + 5}px`;
+            spaceship.style.left = `${left + 10}px`;
         }
     }
 

@@ -40,8 +40,8 @@ main {
 #spaceship {
     position: absolute;
     bottom: 10px;
-    left: 50%;
-    transform: translateX(-50%);
+    left: 0; /* Initial left position */
+    bottom: 0; /* Adjust bottom position as needed */
     width: 60px;
     height: 60px;
     background-image: url('../images/spaceship.png');
