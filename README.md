@@ -138,8 +138,8 @@ This game aims to bring back the charm and simplicity of early video games, offe
 
 - [JavaScript Code Analysis](https://jshint.com/)
 
-    - result for styles.css 
-      ![CSS results 1](documentation/validation-results/jshint.png)   
+    - result for script.js
+      ![JavaScript results](documentation/validation-results/jshint.png)   
 
 ### Google lighthouse testing
 

@@ -8,9 +8,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const pauseButton = document.getElementById('pause-button'); // Add pause button
     const gameOverScreen = document.getElementById('game-over-screen'); // Game over screen element
     const gameOverMessage = document.getElementById('game-over-message'); // Game over message element
-    const restartButton = document.getElementById('restart-button'); // Restart button
-    const endGameButton = document.getElementById('end-game-button'); // End game button
-
+    
     let score = 0;
     let lives = 3;
     let alienSpeed = 2; // Initial speed of aliens
@@ -95,12 +93,6 @@ document.addEventListener('DOMContentLoaded', function() {
         if (gameRunning) {
             togglePause();
         }
-    });
-
-    restartButton.addEventListener('click', function() {
-        resetGame();
-        startGame();
-        hideGameOverScreen();
     });
 
     endGameButton.addEventListener('click', function() {
