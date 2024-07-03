@@ -3,6 +3,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const spaceship = document.getElementById('spaceship');
     const scoreDisplay = document.getElementById('score');
     const livesDisplay = document.getElementById('lives');
+    const shootButton = document.getElementById('shoot-button');
     let score = 0;
     let lives = 3;
     let alienSpeed = 2; // Initial speed of aliens
@@ -10,7 +11,6 @@ document.addEventListener('DOMContentLoaded', function() {
     let moveLeft = false;
     let moveRight = false;
     let touchStartX = 0;
-    let touchEndX = 0;
 
     // Move spaceship left and right
     document.addEventListener('keydown', function(event) {
@@ -36,8 +36,8 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 
     gameArea.addEventListener('touchmove', function(event) {
-        touchEndX = event.touches[0].clientX;
-        const deltaX = touchEndX - touchStartX;
+        const touchX = event.touches[0].clientX;
+        const deltaX = touchX - touchStartX;
 
         if (deltaX > 0) {
             moveRight = true;
@@ -45,12 +45,9 @@ document.addEventListener('DOMContentLoaded', function() {
         } else if (deltaX < 0) {
             moveLeft = true;
             moveRight = false;
-        } else {
-            moveLeft = false;
-            moveRight = false;
         }
 
-        touchStartX = touchX
+        touchStartX = touchX;
     });
 
     gameArea.addEventListener('touchend', function() {
@@ -62,7 +59,7 @@ document.addEventListener('DOMContentLoaded', function() {
         event.preventDefault(); // Prevent triggering mouse event
         shoot();
     });
-    
+
     function moveSpaceship() {
         const left = parseInt(window.getComputedStyle(spaceship).left);
         if (moveLeft && left > 0) {
@@ -74,12 +71,20 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     function shoot() {
-        const projectile = document.createElement('div');
-        projectile.classList.add('projectile');
-        projectile.style.left = `${spaceship.offsetLeft + spaceship.clientWidth / 2 - 2.5}px`;
-        projectile.style.bottom = '60px';
-        gameArea.appendChild(projectile);
-        moveProjectile(projectile);
+        const leftProjectile = document.createElement('div');
+        leftProjectile.classList.add('projectile');
+        leftProjectile.style.left = `${spaceship.offsetLeft}px`;
+        leftProjectile.style.bottom = '60px';
+        gameArea.appendChild(leftProjectile);
+
+        const rightProjectile = document.createElement('div');
+        rightProjectile.classList.add('projectile');
+        rightProjectile.style.left = `${spaceship.offsetLeft + spaceship.clientWidth - 5}px`;
+        rightProjectile.style.bottom = '60px';
+        gameArea.appendChild(rightProjectile);
+
+        moveProjectile(leftProjectile);
+        moveProjectile(rightProjectile);
     }
 
     function moveProjectile(projectile) {
@@ -153,9 +158,10 @@ document.addEventListener('DOMContentLoaded', function() {
 
     function gameLoop() {
         moveSpaceship();
-        requestAnimationFrame(gameLoop);
+        if (Math.random() < 0.02) {
+            createAlien();
+        }
     }
 
-    alienInterval = setInterval(createAlien, 3000);
-    gameLoop();
+    alienInterval = setInterval(gameLoop, 20);
 });
