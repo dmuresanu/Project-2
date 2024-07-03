@@ -12,7 +12,7 @@ header {
     font-family: "Press Start 2P", system-ui;
     font-weight: 400;
     font-style: normal;
-    font-size: large;
+    font-size: 0.8rem; /* Adjusted font size */
     background-color: #444444;
     color: #ffffff;
     text-align: center;
@@ -24,6 +24,7 @@ main {
     flex-direction: column;
     align-items: center;
     margin: 1.5em 0;
+    padding-bottom: 60px; /* Ensure space for the shoot button */
 }
 
 /* Game Layout */
@@ -72,11 +73,11 @@ main {
 }
 
 #shoot-button {
-    position: fixed;
-    bottom: 2em;
-    right: 2em;
-    padding: 1em;
-    font-size: 1.2em;
+    position: absolute;
+    bottom: 1em;
+    right: 1em;
+    padding: 0.5em 1em;
+    font-size: 1em;
     background-color: rgba(255, 0, 0, 0.7);
     border: none;
     color: white;
@@ -89,12 +90,17 @@ footer {
     background-color: #444444;
     color: #ffffff;
     text-align: center;
-    padding: 1em;
     position: fixed;
     width: 100%;
     bottom: 0;
+    padding: 8px 0; /* Adjusted padding for better spacing */
+    font-size: 14px; /* Decreased font size */
 }
 
+footer p {
+    margin: 0; /* Remove margin to reduce space */
+    line-height: 1.5; /* Improved line height for readability */
+}
 /* Responsive styles */
 @media (max-width:500px) {
     main {
