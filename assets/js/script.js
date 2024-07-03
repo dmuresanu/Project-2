@@ -39,16 +39,18 @@ document.addEventListener('DOMContentLoaded', function() {
         touchEndX = event.touches[0].clientX;
         const deltaX = touchEndX - touchStartX;
 
-        if (deltaX > 20) {
+        if (deltaX > 0) {
             moveRight = true;
             moveLeft = false;
-        } else if (deltaX < -20) {
+        } else if (deltaX < 0) {
             moveLeft = true;
             moveRight = false;
         } else {
             moveLeft = false;
             moveRight = false;
         }
+
+        touchStartX = touchX
     });
 
     gameArea.addEventListener('touchend', function() {
@@ -56,6 +58,11 @@ document.addEventListener('DOMContentLoaded', function() {
         moveRight = false;
     });
 
+    shootButton.addEventListener('touchstart', function(event) {
+        event.preventDefault(); // Prevent triggering mouse event
+        shoot();
+    });
+    
     function moveSpaceship() {
         const left = parseInt(window.getComputedStyle(spaceship).left);
         if (moveLeft && left > 0) {

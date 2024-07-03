@@ -34,6 +34,7 @@ main {
     background-color: #111111;
     border: 1px solid #cccccc;
     overflow: hidden;
+    touch-action: none;
 }
 
 #spaceship {
@@ -59,7 +60,7 @@ main {
     position: absolute;
     width: 5px;
     height: 20px;
-    background-color: red;
+    background-color: rgba(255, 0, 0, 0.7);
 }
 
 #score-board {
@@ -70,10 +71,23 @@ main {
     font-size: 1.2em;
 }
 
+#shoot-button {
+    position: fixed;
+    bottom: 2em;
+    right: 2em;
+    padding: 1em;
+    font-size: 1.2em;
+    background-color: rgba(255, 0, 0, 0.7);
+    border: none;
+    color: white;
+    border-radius: 50%;
+    z-index: 10;
+}
+
 /*Footer*/
 footer {
-    background-color: #444;
-    color: #fff;
+    background-color: #444444;
+    color: #ffffff;
     text-align: center;
     padding: 1em;
     position: fixed;
@@ -104,5 +118,10 @@ footer {
     .projectile {
         width: 4px;
         height: 16px;
+    }
+
+    #shoot-button {
+        padding: 0.5em;
+        font-size: 1em;
     }
 }
