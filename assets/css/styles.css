@@ -125,3 +125,10 @@ footer {
         font-size: 1em;
     }
 }
+
+/* Media query to hide shoot button on screens wider than 500px */
+@media (min-width: 501px) {
+    #shoot-button {
+        display: none;
+    }
+}
